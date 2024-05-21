@@ -30,6 +30,8 @@ namespace tianli::frame
         std::function<cv::Rect(cv::Rect)> frame_rect_callback;
 
     public:
+        static std::shared_ptr<frame_source> create(source_type type, std::shared_ptr<global::logger> logger = nullptr);
+    public:
         frame_source(std::shared_ptr<global::logger> logger = nullptr) : logger(logger)
         {
             if (logger == nullptr)
