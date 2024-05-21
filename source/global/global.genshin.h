@@ -57,7 +57,7 @@ namespace tianli::global
     };
 
     const std::vector<std::pair<std::wstring, GenshinWindowClass>> GenshinWindowNameList = {
-        { L"原神", GenshinWindowClass::Unity }, { L"云·原神", GenshinWindowClass::Qt },           { L"窗口投影（源） - 云·原神", GenshinWindowClass::Obs },
+        { L"原神", GenshinWindowClass::Unity }, { L"云·原神", GenshinWindowClass::Qt },        
         { L"원신", GenshinWindowClass::Unity }, { L"Genshin Impact", GenshinWindowClass::Unity }, { L"原神-调试", GenshinWindowClass::None }
     };
     const cv::Rect MatchPaimonKeyPointRect = { 25, 12, 68, 77 };
