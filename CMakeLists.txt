@@ -24,7 +24,7 @@ parse_version_file("source/resource/version.ver")
 get_commit_hash(PROJECT_VERSION_HASH)
 get_git_branch(PROJECT_VERSION_BRANCH)
 #=======================================================================================================================
-set(BUILD_DYANMIC_LINK_DEPS ON CACHE BOOL "动态链接依赖库")
+set(BUILD_DYANMIC_LINK_DEPS OFF CACHE BOOL "动态链接依赖库")
 set(BUILD_CVAUTOTRACK_TESTS OFF CACHE BOOL "编译测试")
 set(BUILD_DOC OFF CACHE BOOL "编译文档")
 
