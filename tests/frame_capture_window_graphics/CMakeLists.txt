@@ -6,7 +6,8 @@ target_compile_options(${test_name} PRIVATE "/W2")
 string(REPLACE "_" ";" test_name_splits ${test_name})
 list(GET test_name_splits 1 test_group_name)
 set_target_properties(${test_name} PROPERTIES FOLDER "tests/${test_group_name}")
-target_link_libraries(${test_name} ${OpenCV_LIBS})
+target_link_libraries(${test_name} ${OpenCV_LIBS} tianli::frame)
+
 add_test(NAME ${test_name} COMMAND ${test_name})
 # copy opencv
 add_custom_command(TARGET ${test_name} POST_BUILD

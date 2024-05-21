@@ -1,8 +1,6 @@
 #include <opencv2/core/utils/logger.hpp>
 #include <opencv2/opencv.hpp>
 
-#include <frame/capture/capture.include.h>
-#include <frame/capture/capture.window_graphics.h>
 #include <frame/frame.include.h>
 #include <global/record/record.stdlog.h>
 #include <iostream>
@@ -50,7 +48,7 @@ cv::Mat get_frame_form_window(HWND handle)
 {
     cv::Mat frame;
     auto logger = std::make_shared<tianli::global::record::std_logger>();
-    auto capture = std::make_shared<tianli::frame::capture::capture_window_graphics>(logger);
+    auto capture = tianli::frame::frame_source::create(tianli::frame::frame_source::source_type::window_graphics, logger);
 
     capture->set_capture_handle(handle);
     std::this_thread::sleep_for(std::chrono::milliseconds(18));
