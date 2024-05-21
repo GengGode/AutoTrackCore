@@ -120,7 +120,7 @@ namespace tianli::frame::capture::utils::window_graphics
         D3D11_TEXTURE2D_DESC desc_type{ 0, 0, 1, 1, DXGI_FORMAT_B8G8R8A8_UNORM, { 1, 0 }, D3D11_USAGE_STAGING, 0, D3D11_CPU_ACCESS_READ, 0 };
     };
 
-    bool get_client_box(HWND window, uint32_t width, uint32_t height, D3D11_BOX* client_box)
+    inline bool get_client_box(HWND window, uint32_t width, uint32_t height, D3D11_BOX* client_box)
     {
         RECT client_rect{}, window_rect{};
         POINT upper_left{};
@@ -160,7 +160,7 @@ namespace tianli::frame::capture::utils::window_graphics
         return client_box_available;
     }
 
-    void set_capture_session_property(winrt::Windows::Graphics::Capture::GraphicsCaptureSession& session, bool is_border = false, bool is_cursor = false)
+    inline void set_capture_session_property(winrt::Windows::Graphics::Capture::GraphicsCaptureSession& session, bool is_border = false, bool is_cursor = false)
     {
         // 判断 WindowsSDK 版本大于等于 10.0.22000.0
 #if (WINVER >= _WIN32_WINNT_WIN10_21H1)
