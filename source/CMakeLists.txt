@@ -1,15 +1,51 @@
 # opencv
 set(OpenCV_DIR "${ThridPatryDir}/opencv-xfeatures2d-release-static/x64/vc17/staticlib")
+set(WITH_DYNAMIC_OPENCV OFF)
 if(BUILD_DYANMIC_LINK_DEPS)
     set(OpenCV_DIR "${ThridPatryDir}/opencv-xfeatures2d-shared/x64/vc17/lib")
     set(OpenCV_DIR "${ThridPatryDir}/opencv-cvv-dll/x64/vc17/lib")
+    set(WITH_DYNAMIC_OPENCV ON)
 endif()
 find_package(OpenCV REQUIRED)
 set(opencv_include_dir ${OpenCV_INCLUDE_DIRS} PARENT_SCOPE)
 set(opencv_version ${OpenCV_VERSION} PARENT_SCOPE)
 
-file(GLOB_RECURSE CppFiles "*.cpp")
-file(GLOB_RECURSE HppFiles "*.h" "*.hpp")
+file(GLOB_RECURSE CppFiles 
+"algorithms/*.cpp"
+"genshin/*.cpp"
+"global/*.cpp"
+"match/*.cpp"
+"resource/*.cpp"
+"resources/*.cpp"
+"utils/*.cpp"
+"AutoTrack.cpp"
+"cvAutoTrack.cpp"
+"dllmain.cpp"
+"ErrorCode.cpp"
+"module.debug.cpp"
+"module.error.cpp"
+"module.frame.cpp"
+"module.resource.cpp"
+"module.string.cpp"
+"module.version.cpp"
+"pch.cpp"
+)
+file(GLOB_RECURSE HppFiles 
+"algorithms/*.h"
+"algorithms/*.hpp"
+"genshin/*.h"
+"genshin/*.hpp"
+"global/*.h"
+"global/*.hpp"
+"match/*.h"
+"match/*.hpp"
+"resource/*.h"
+"resource/*.hpp"
+"resources/*.h"
+"resources/*.hpp"
+"utils/*.h"
+"utils/*.hpp"
+)
 set(VerRcFile "${CMAKE_CURRENT_SOURCE_DIR}/resource/version.rc")
 set(VerHppFile "${CMAKE_CURRENT_SOURCE_DIR}/resource/version.h")
 set(InfaceHppFile "${IncludeDir}/cvAutoTrack.h")
@@ -100,14 +136,16 @@ if(WITCH_OPENCV_CVV)
     list(APPEND opencv_libs opencv_cvv)
 endif()
 
+add_subdirectory(frame)
+
+
 target_link_libraries(cvAutoTrack 
 PRIVATE  
+    tianli::frame
     ${opencv_libs}
     cereal::cereal 
     fmt::fmt-header-only 
-    d3d11.lib 
-    d3dcompiler.lib 
-    dxgi.lib)
+    )
 
 # install to release
 if(BUILD_DYANMIC_LINK_DEPS)
