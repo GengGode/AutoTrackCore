@@ -1,7 +1,7 @@
 get_filename_component(dir_name ${CMAKE_CURRENT_SOURCE_DIR} NAME)
 set(test_name test_${dir_name})
 add_executable(${test_name} main.cpp)
-set_property(TARGET ${test_name} PROPERTY  MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+set_property(TARGET ${test_name} PROPERTY  MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>$<$<BOOL:${WITH_DYNAMIC_OPENCV}>:DLL>")
 target_compile_options(${test_name} PRIVATE "/W2")
 string(REPLACE "_" ";" test_name_splits ${test_name})
 list(GET test_name_splits 1 test_group_name)
