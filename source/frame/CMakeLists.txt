@@ -17,7 +17,6 @@ target_sources(tianli_frame
         
         )
 
-set(WITH_DYNAMIC_OPENCV OFF)
 set_target_properties(tianli_frame PROPERTIES MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>$<$<BOOL:${WITH_DYNAMIC_OPENCV}>:DLL>")
 set_target_properties(tianli_frame PROPERTIES FOLDER "cvAutoTrack/modules")
 
